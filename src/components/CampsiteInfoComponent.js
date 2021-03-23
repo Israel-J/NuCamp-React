@@ -14,7 +14,7 @@ const minLength = len => val => val && (val.length >= len);
 
 
   //METHOD
-  function RenderComments({comments, addComment, campsiteId}) {
+  function RenderComments({comments, postComment, campsiteId}) {
     if (comments) {
       return (
         <div className="col-md-5 m-1">
@@ -33,7 +33,7 @@ const minLength = len => val => val && (val.length >= len);
               </div>
             );
           })}
-          <CommentForm addComment={addComment} campsiteId={campsiteId} />
+          <CommentForm postComment={postComment} campsiteId={campsiteId} />
         </div>
       );
     }
@@ -91,7 +91,7 @@ const minLength = len => val => val && (val.length >= len);
             <RenderCampsite campsite={props.campsite} />
             <RenderComments 
                 comments={props.comments} 
-                addComment={props.addComment}
+                postComment={props.postComment}
                 campsiteId={props.campsite.id}
             />
           </div>
@@ -125,7 +125,7 @@ const minLength = len => val => val && (val.length >= len);
     }
 
     handleSubmit(values) {
-      this.props.addComment(this.props.campsiteId, values.rating, values.author, values.text);
+      this.props.postComment(this.props.campsiteId, values.rating, values.author, values.text);
   }
 
     render () {
